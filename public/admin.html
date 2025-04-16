@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - QRcodedasorte</title>
+</head>
+<body>
+    <h2>Atualizar Mensagem</h2>
+    <form id="form">
+        <textarea id="novaMensagem" rows="4" cols="50" placeholder="Digite a nova mensagem..."></textarea><br>
+        <input type="password" id="senha" placeholder="Senha"><br>
+        <button type="submit">Atualizar</button>
+    </form>
+    <script>
+        document.getElementById('form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const novaMensagem = document.getElementById('novaMensagem').value;
+            const senha = document.getElementById('senha').value;
+            const res = await fetch('/atualizar', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ mensagem: novaMensagem, senha })
+            });
+            alert(await res.text());
+        });
+    </script>
+</body>
+</html>

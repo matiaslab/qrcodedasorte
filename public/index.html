@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code da Sorte</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+        .card { background: #f0f0f0; padding: 2em; border-radius: 10px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Mensagem do Dia 🍀</h1>
+        <p id="mensagem">Carregando...</p>
+    </div>
+    <script>
+        fetch('/mensagem')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('mensagem').innerText = data.hoje;
+            });
+    </script>
+</body>
+</html>
